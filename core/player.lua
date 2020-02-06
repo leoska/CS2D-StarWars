@@ -6,17 +6,24 @@
 -- Class name
 sw.Player = {}
 
--- Class body
-function sw.Player:new(id, health)
+---@class sw.Player
+function sw.Player:new(id)
     local private = {}
         -- Private properties and methods
         private.id      = id;
-        private.health  = health;
+        private.health  = 0;
         private.speed   = 0;
         private.class   = 0;
         
     local public = {}
         -- Public properties and methods
+
+        ---@destructor
+        function public.destructor()
+        end
+
+        ---@getter
+        ---@return number
         function public.getHealth()
             return private.health
         end
