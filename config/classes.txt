@@ -1,0 +1,19 @@
+// Heroes File
+//
+// Add Heroes Here ...
+// Note: You have to set values between their sizes.
+// [Name]			> ( A - Z , a - z , 0 - 9 )
+// [Affiliation]		> ( Republic ; Empire )
+// [Class]			> ( Offense ; Defense ; Support )
+// [Health]			> ( 75 - 250 )
+// [Barrier]			> ( 0 - 250 )
+// [Speed]			> ( - ) 15
+// [Item(s)]			> ( 1 - 100 ) ( For IDs check "weapon IDs.txt" file ) e.g. 4,32,51
+// [Skin]           		> ( Images name file )
+//
+// e.g. #class : Trooper : Republic : Offense : 175 : 201: 5
+//
+
+//[Add Class] : [Name] : [Affiliation] : [Class] : [Health] : [Barrier] : [Speed] : [Item(s)] : [Skin]
+// Troopers (Assault)
+#class : StormTrooper : Empire : Offense : 150 : 25 : 5 : 32 : stormtrooper.bmp
