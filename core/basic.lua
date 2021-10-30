@@ -3,6 +3,8 @@
 -- Use Encoding: Windows 1252 --
 --------------------------------
 
+sw.loadAdmins()
+sw.loadAdverts()
 sw.loadClasses()
 
 ---@param id number
@@ -66,7 +68,7 @@ end
 ---@param button number
 function sw.serveraction(id, button)
     if (button == 1) then
-        error("TI ohuel?")
+        
     elseif (button == 2) then
         sw.menuHeroes(id, 0)
     end
@@ -91,6 +93,20 @@ end
 ---@param button number
 function sw.menu(id, title, button)
     if (string.sub(title, 1, 17) == "Choose Your Class") then
-        sw.classes_menu_render(id, button)
+        sw.renderMenuClasses(id, button)
     end
+end
+
+---@param id number
+---@param team number
+function sw.team(id, team)
+    if (team == 1) then
+        sw.players[id]:setAffiliation("Empire")
+    elseif (team == 2) then
+        sw.players[id]:setAffiliation("Republic")
+    end
+end
+
+function sw.die(id)
+    sw.players[id]:die()
 end

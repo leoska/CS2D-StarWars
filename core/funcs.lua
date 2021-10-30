@@ -3,6 +3,7 @@
 -- Use Encoding: Windows 1252 --
 --------------------------------
 
+--- Split a string to table
 ---@param t string
 ---@param b string
 ---@return table
@@ -21,6 +22,7 @@ function string.split(t, b)
 	return cmd
 end
 
+--- Calculate a distance
 ---@param x1 number
 ---@param y1 number
 ---@param x2 number
@@ -29,6 +31,7 @@ end
 function Distance(x1, y1, x2, y2)
 	return math.sqrt((x1 - x2) ^ 2 + (y1 - y2) ^ 2)
 end
+
 
 ---@param child any
 ---@param parent any
@@ -40,41 +43,10 @@ function sw.msg2(id, color, text)
 	msg2(id, string.format(sw.colors[color]..""..text))
 end
 
---[[ Read Files ]]--
-
-function sw.loadClasses()
-	local f = io.open(path.."config/classes.txt", "r")
-	local line = 0
-
-	-- Create List of Classes Controller
-	sw.classes = sw.ClassList:new()
-
-	if (f ~= nil) then
-		for strValue in f:lines() do
-			line = line + 1
-			if (string.sub(strValue, 1, 2) ~= "//") then -- Comment string
-				if (string.sub(strValue, 1, 6) == "#class") then
-					local stats = sw.getStatsFromLine(line, strValue)
-
-					if (sw.checkClassValues(stats, line)) then
-						local class = sw.Class:new(stats)
-						class.id = sw.classes:length() + 1
-						sw.classes:insert(class)
-					end
-				end
-			end
-		end
-		io.close(f)
-	else
-		error("Config File \"classes.txt\" is missing!")
-	end
-
-	sw.classes:createEmpireList()
-	sw.classes:createRepublicList()
-end
 
 --[[ Secondary functions ]]--
 
+--- Test description
 ---@param line number
 ---@param strValue string
 ---@return table

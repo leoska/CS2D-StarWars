@@ -84,6 +84,7 @@ function sw.Player:new(id)
                     private.health = private.health - damage
 
                     if (private.health <= 0) then
+                        parse('killplayer '..private.id)
                         self:die(performer)
                     end
                 end
@@ -99,8 +100,6 @@ function sw.Player:new(id)
         ---@param self Player
         ---@param performer any
         function public.die(self, performer)
-            parse('killplayer '..private.id)
-
             private.alive       = false
             private.health      = 0
             private.barrier     = 0
@@ -125,7 +124,7 @@ function sw.Player:new(id)
         end
 
         function public.updateHUD(self)
-            local col1, col2, col3, col4 = "©128255000", "©000255000", "©255255255", "©128166255"
+            local col1, col2, col3, col4 = "ï¿½128255000", "ï¿½000255000", "ï¿½255255255", "ï¿½128166255"
             local wpos, hpos = player(private.id, "screenw"), player(private.id, "screenh")
             local x, y = 0, 0
             x = wpos / 2 - 65
@@ -142,7 +141,7 @@ function sw.Player:new(id)
 
         function public.updateHpBar(self)
             local str1, str2 = "", ""
-            local col1, col2, col3 = "©255255255", "©128255000", "©000128255"
+            local col1, col2, col3 = "ï¿½255255255", "ï¿½128255000", "ï¿½000128255"
             local wpos, hpos = player(private.id, "screenw"), player(private.id, "screenh")
             for i = 1, (math.ceil(private.health / 5)) do
                 str1 = str1.."|"

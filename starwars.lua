@@ -1,5 +1,5 @@
 -------------------------------------------
--- Star Wars v0.0.0 by leoska			 --
+-- Star Wars v0.0.1 by leoska			 --
 -- Use Encoding: Windows 1252            --
 -------------------------------------------
 -- Credits:					--
@@ -14,23 +14,25 @@ sw = {}
 --[[ Global Values ]]--
 minutes         = 0
 seconds         = 0
+version         = "v0.0.1"
 sw.admins       = {} -- Admins
+sw.adverts      = {} -- Adverts
 sw.maps         = {} -- Maps
 sw.lasers       = {} -- Lasers
 sw.players      = {} -- Players
 sw.classes      = {} -- Classes
 sw.colors       = {  -- Colors
-    ["red"]         = "©255000000",
-    ["green"]       = "©000255000",
-    ["blue"]        = "©000000255",
-    ["orange"]      = "©255165000",
-    ["cyan"]        = "©000255255",
-    ["magenta"]     = "©255000255",
-    ["white"]       = "©255255255",
-    ["yellow"]      = "©255255000",
-    ["darkOrange"]  = "©255140000",
-    ["hotPink"]     = "©255105180",
-    ["violet"]      = "©238130238",
+    ["red"]         = "ï¿½255000000",
+    ["green"]       = "ï¿½000255000",
+    ["blue"]        = "ï¿½000000255",
+    ["orange"]      = "ï¿½255165000",
+    ["cyan"]        = "ï¿½000255255",
+    ["magenta"]     = "ï¿½255000255",
+    ["white"]       = "ï¿½255255255",
+    ["yellow"]      = "ï¿½255255000",
+    ["darkOrange"]  = "ï¿½255140000",
+    ["hotPink"]     = "ï¿½255105180",
+    ["violet"]      = "ï¿½238130238",
 }
 
 
@@ -39,14 +41,16 @@ path = "sys/lua/starwars/"
 -- Configs
 dofile(path.."config/settings.cfg")
 dofile(path.."config/config.cfg")
+-- Configparsers
+dofile(path.."core/configs.lua")
 -- Secondary functions
 dofile(path.."core/funcs.lua")
 -- Classes
-dofile(path.."core/list.lua")
-dofile(path.."core/class.lua")
-dofile(path.."core/classList.lua")
-dofile(path.."core/player.lua")
-dofile(path.."core/laser.lua")
+dofile(path.."core/classes/list.lua")
+dofile(path.."core/classes/class.lua")
+dofile(path.."core/classes/classList.lua")
+dofile(path.."core/classes/player.lua")
+dofile(path.."core/classes/laser.lua")
 -- Basic functions
 dofile(path.."core/basic.lua")
 
@@ -60,6 +64,8 @@ addhook("serveraction",     "sw.serveraction")
 addhook("spawn",            "sw.spawn")
 addhook("hit",              "sw.hit")
 addhook("menu",             "sw.menu")
+addhook("team",             "sw.team")
+addhook("die",              "sw.die")
 
 
 print(_VERSION)
